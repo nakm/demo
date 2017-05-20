@@ -1,0 +1,13 @@
+spring:
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/devlocal
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+ 
+  thymleaf:
+    cache: false
+
+logging:
+  config: src/main/resources/config/log4j2.yml

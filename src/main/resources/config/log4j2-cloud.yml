@@ -1,0 +1,22 @@
+Configuration:
+  status: "warn"
+  Appenders:
+    Console: 
+      name: "console"
+      PatternLayout:
+         pattern: "%d{yyyy/MM/dd HH:mm:ss.SSS} %-5level - %m%n"
+    NoSQL:
+      name: "databaseAppender"
+      CouchDb:
+        databasename: "hma"
+        protocol: "http"
+        server: "${VCAP_SERVICES_CLOUDANTNOSQLDB[0]_CREDENTIALS_HOST}"
+        username: "${VCAP_SERVICES_CLOUDANTNOSQLDB[0]_CREDENTIALS_USERNAME}"
+        password: "${VCAP_SERVICES_CLOUDANTNOSQLDB[0]_CREDENTIALS_PASSWORD}"
+
+  Loggers:
+    Root:
+     level: "warn"
+     AppenderRef:
+      - ref: "console"
+      - ref: "databaseAppender"
